@@ -55,6 +55,9 @@ describe('finalResult', () => {
     it('should create all unique combinations for a very short char array', () => {
         expect(finalResult(["c","n"])).toEqual(['c', 'cn', 'n']);
     })
+    it('should create all unique combinations for a char array without duplicates', () => {
+        expect(finalResult(["c","v","l", "v"])).toEqual(['c', 'cv', 'cvl', 'cvlv', 'cl', 'clv', 'v', 'vl', 'vlv', 'vv', 'l', 'lv', 'v']);
+    })
     it('should create all unique combinations for a short char array', () => {
         expect(finalResult(["c","n","s"])).toEqual(['c', 'cn', 'cns','cs', 'n', 'ns', 's']);
     })
