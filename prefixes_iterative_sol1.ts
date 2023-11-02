@@ -1,5 +1,7 @@
 function getStrings<T>(array: T[]): string[] {
-    const stringifiedArr = array.map(it => typeof it === 'object' ? JSON.stringify(it) : `${it}`) // O(n)
+    if (!array.length)
+        return [];
+    const stringifiedArr = array?.map(it => typeof it === 'object' ? JSON.stringify(it) : `${it}`) // O(n)
     const newArr: string[]= [];
 
     for (let i= 0; i < stringifiedArr.length; i++){
@@ -18,7 +20,7 @@ function getStrings<T>(array: T[]): string[] {
 
 // const combinaisons: string[] = getStrings([1,"k", "true", "hehe", {"kikou": 5}]);
 // const combinaisons: string[] = getStrings(["c", "v", "l", "g"]);
-const combinaisons: string[] = getStrings(["c", "n", "s"]);
+// const combinaisons: string[] = getStrings(["c", "n", "s"]);
 // console.log('combi ', combinaisons)
 
 // This code isn't the most optimized code in terms of time and space complexity
