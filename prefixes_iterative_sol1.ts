@@ -2,7 +2,7 @@ function getStrings<T>(array: T[]): string[] {
     if (!array.length)
         return [];
     const stringifiedArr = array?.map(it => typeof it === 'object' ? JSON.stringify(it) : `${it}`) // O(n)
-    const newArr: string[]= [];
+    let newArr: string[]= [];
 
     for (let i= 0; i < stringifiedArr.length; i++){
         let temp = stringifiedArr[i];
@@ -15,13 +15,16 @@ function getStrings<T>(array: T[]): string[] {
             }
         }
     }
+    newArr = newArr?.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
     return newArr;
 }
 
-// const combinaisons: string[] = getStrings([1,"k", "true", "hehe", {"kikou": 5}]);
-// const combinaisons: string[] = getStrings(["c", "v", "l", "g"]);
-// const combinaisons: string[] = getStrings(["c", "n", "s"]);
-// console.log('combi ', combinaisons)
-
 // This code isn't the most optimized code in terms of time and space complexity
 // Time complexity O(n^3) - Space complexity O(n^2) bc of the newArray i created
+
+// const combinaisons: string[] = getStrings([1,"k", "true", "hehe", {"kikou": 5}]);
+// const combinaisons: string[] = getStrings(["c", "v", "v", "v"]);
+// const combinaisons: string[] = getStrings(["c", "n", "s"]);
+// console.log('combi ', combinaisons)
